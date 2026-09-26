@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"/mnt/c/Program Files/nodejs/node.exe\" -v)",
+      "Bash(\"/mnt/c/Program Files/nodejs/npm.cmd\" -v)",
+      "Bash(cmd.exe /c \"npm -v\")",
+      "Bash(cmd.exe /c \"npm install swagger-jsdoc swagger-ui-express\")",
+      "Bash(timeout 15 \"/mnt/c/Program Files/nodejs/node.exe\" test-db.js)",
+      "Bash(timeout 10 \"/mnt/c/Program Files/nodejs/node.exe\" app.js)",
+      "Bash(nohup \"/mnt/c/Program Files/nodejs/node.exe\" app.js)",
+      "Bash(echo \"PID: $!\")",
+      "Read(//tmp/claude-1000/**)"
+    ]
+  }
+}
