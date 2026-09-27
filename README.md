@@ -4,10 +4,8 @@ Backend REST para la gestión básica de un supermercado: productos, proveedores
 
 ## Integrantes
 
-- [Nombre completo] — [Responsabilidad]
-- [Nombre completo] — [Responsabilidad]
-- [Nombre completo] — [Responsabilidad]
-- [Nombre completo] — [Responsabilidad]
+- Cristian Felipe Barreto - Configuracion inicial y modulos de productos y proveedores — 
+- Juan Camilo Giraldo     - Modulos de usuario y ventas, relaciones entre modelos
 
 ## Tecnologías
 
@@ -47,10 +45,10 @@ app.js                  # Punto de entrada: servidor, conexión a BD y rutas
 
 ## Modelo de datos y relaciones
 
-- **Proveedor → Productos**: un proveedor puede tener muchos productos (`Product.providerId`).
-- **Usuario → Ventas**: un usuario puede registrar muchas ventas (`Sale.userId`).
-- **Venta → DetalleVenta**: una venta tiene muchos detalles (`SaleDetail.saleId`).
-- **Producto → DetalleVenta**: un producto puede aparecer en muchos detalles de venta (`SaleDetail.productId`).
+- **Proveedor → Productos**: un proveedor puede tener muchos productos.
+- **Usuario → Ventas**: un usuario puede registrar muchas ventas.
+- **Venta → DetalleVenta**: una venta tiene muchos detalles.
+- **Producto → DetalleVenta**: un producto puede aparecer en muchos detalles de venta .
 
 ## Instrucciones de ejecución
 
@@ -67,11 +65,8 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-Copia `.env.example` a `.env` y ajusta los valores según tu base de datos local:
+crear `.env` y ajusta los valores según tu base de datos local:
 
-```bash
-cp .env.example .env
-```
 
 ```
 DB_NAME=marketsoft
@@ -93,9 +88,6 @@ Crea en PostgreSQL una base de datos con el nombre indicado en `DB_NAME` (por ej
 # Modo desarrollo (con recarga automática)
 npm run dev
 
-# Modo producción
-npm start
-```
 
 El servidor queda disponible en `http://localhost:3000`.
 
