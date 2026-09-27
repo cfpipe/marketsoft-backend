@@ -88,6 +88,9 @@ Crea en PostgreSQL una base de datos con el nombre indicado en `DB_NAME` (por ej
 # Modo desarrollo (con recarga automática)
 npm run dev
 
+# Modo producción
+npm start
+```
 
 El servidor queda disponible en `http://localhost:3000`.
 
@@ -117,9 +120,11 @@ Cada entidad soporta:
 - `PUT /api/<entidad>/:id` — actualizar
 - `DELETE /api/<entidad>/:id` — eliminar
 
-### Ejemplos
+### Ejemplos (orden recomendado para probar en Swagger)
 
-**Crear un proveedor**
+Como `Producto` depende de `Proveedor` y `Venta` depende de `Usuario` y `Producto`, sigue este orden al crear datos de prueba para no toparte con errores de referencias:
+
+**1. Proveedores** — `POST /api/providers`
 
 ```http
 POST /api/providers
@@ -133,7 +138,20 @@ Content-Type: application/json
 }
 ```
 
-**Crear un producto** (`providerId` debe existir)
+**2. Usuarios** — `POST /api/users` (el email debe ser único)
+
+```http
+POST /api/users
+Content-Type: application/json
+
+{
+  "name": "Camilo Giraldo",
+  "email": "camilo@marketsoft.com",
+  "role": "admin"
+}
+```
+
+**3. Productos** — `POST /api/products` (`providerId` debe ser el `id` de un proveedor creado en el paso 1)
 
 ```http
 POST /api/products
@@ -148,20 +166,7 @@ Content-Type: application/json
 }
 ```
 
-**Crear un usuario** (el email debe ser único)
-
-```http
-POST /api/users
-Content-Type: application/json
-
-{
-  "name": "Camilo Giraldo",
-  "email": "camilo@marketsoft.com",
-  "role": "admin"
-}
-```
-
-**Crear una venta** (el `total` se calcula automáticamente a partir de los productos y su cantidad)
+**4. Ventas** — `POST /api/sales` (`userId` del paso 2, `productId` del paso 3; el `total` se calcula automáticamente)
 
 ```http
 POST /api/sales
@@ -177,6 +182,20 @@ Content-Type: application/json
 ```
 
 La venta descuenta el stock de cada producto y crea sus registros de `SaleDetail` en una sola transacción.
+
+**5. Detalle de Venta** — `POST /api/sale-details` (opcional; normalmente no hace falta crearlo a mano porque el paso 4 ya lo genera). Solo úsalo si necesitas agregar un detalle suelto, usando un `saleId` del paso 4 y un `productId` del paso 3.
+
+```http
+POST /api/sale-details
+Content-Type: application/json
+
+{
+  "saleId": 1,
+  "productId": 1,
+  "quantity": 2,
+  "price": 3500
+}
+```
 
 ## Validaciones implementadas
 

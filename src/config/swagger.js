@@ -13,6 +13,13 @@ const options = {
                 url: 'http://localhost:3000',
                 description: 'Servidor local'
             }
+        ],
+        tags: [
+            { name: 'Proveedores', description: 'Gestión de proveedores' },
+            { name: 'Usuarios', description: 'Gestión de usuarios' },
+            { name: 'Productos', description: 'Gestión de productos' },
+            { name: 'Ventas', description: 'Gestión de ventas' },
+            { name: 'DetalleVenta', description: 'Gestión de los detalles de venta' }
         ]
     },
     apis: ['./src/routes/*.js']
