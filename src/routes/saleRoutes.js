@@ -87,7 +87,7 @@ router.post('/', createSale);
  * @swagger
  * /api/sales/{id}:
  *   put:
- *     summary: Actualizar una venta
+ *     summary: Actualizar una venta (solo userId y date; el total no se recalcula aquí)
  *     tags: [Ventas]
  *     parameters:
  *       - in: path
@@ -95,6 +95,18 @@ router.post('/', createSale);
  *         required: true
  *         schema:
  *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userId:
+ *                 type: integer
+ *               date:
+ *                 type: string
+ *                 format: date-time
  *     responses:
  *       200:
  *         description: Venta actualizada

@@ -55,6 +55,21 @@ router.get('/:id', getSaleDetailById);
  *   post:
  *     summary: Crear un detalle de venta
  *     tags: [DetalleVenta]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               saleId:
+ *                 type: integer
+ *               productId:
+ *                 type: integer
+ *               quantity:
+ *                 type: integer
+ *               price:
+ *                 type: number
  *     responses:
  *       201:
  *         description: Detalle de venta creado
@@ -73,6 +88,21 @@ router.post('/', createSaleDetail);
  *         required: true
  *         schema:
  *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               saleId:
+ *                 type: integer
+ *               productId:
+ *                 type: integer
+ *               quantity:
+ *                 type: integer
+ *               price:
+ *                 type: number
  *     responses:
  *       200:
  *         description: Detalle de venta actualizado

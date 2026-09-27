@@ -5,7 +5,7 @@ Backend REST para la gestión básica de un supermercado: productos, proveedores
 ## Integrantes
 
 - Cristian Felipe Barreto - Configuracion inicial y modulos de productos y proveedores — 
-- Juan Camilo Giraldo     - Modulos de usuario y ventas, relaciones entre modelos
+- Juan Camilo Giraldo     - Modulos de usuario y ventas, relaciones entre modelos e integracion
 
 ## Tecnologías
 
@@ -65,7 +65,7 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-crear `.env` y ajusta los valores según tu base de datos local:
+crear `.env` y ajusta los valores según la base de datos local:
 
 
 ```
@@ -120,9 +120,9 @@ Cada entidad soporta:
 - `PUT /api/<entidad>/:id` — actualizar
 - `DELETE /api/<entidad>/:id` — eliminar
 
-### Ejemplos (orden recomendado para probar en Swagger)
+### Ejemplo
 
-Como `Producto` depende de `Proveedor` y `Venta` depende de `Usuario` y `Producto`, sigue este orden al crear datos de prueba para no toparte con errores de referencias:
+Como `Producto` depende de `Proveedor` y `Venta` depende de `Usuario` y `Producto`, se plantea el siguinete ejemplo en el siguinete orden para no tener errores de referecia:
 
 **1. Proveedores** — `POST /api/providers`
 
@@ -131,10 +131,10 @@ POST /api/providers
 Content-Type: application/json
 
 {
-  "name": "Distribuidora ABC",
+  "name": "Distribuidora Umanizales",
   "phone": "3001234567",
-  "email": "contacto@abc.com",
-  "city": "Bogotá"
+  "email": "contacto@umanizales.com",
+  "city": "Manizales"
 }
 ```
 
@@ -183,7 +183,7 @@ Content-Type: application/json
 
 La venta descuenta el stock de cada producto y crea sus registros de `SaleDetail` en una sola transacción.
 
-**5. Detalle de Venta** — `POST /api/sale-details` (opcional; normalmente no hace falta crearlo a mano porque el paso 4 ya lo genera). Solo úsalo si necesitas agregar un detalle suelto, usando un `saleId` del paso 4 y un `productId` del paso 3.
+**5. Detalle de Venta** — `POST /api/sale-details` (opcional; normalmente no hace falta crearlo a mano porque el paso 4 ya lo genera). usarlo solo si necesita agregar un detalle suelto, usando un `saleId` del paso 4 y un `productId` del paso 3.
 
 ```http
 POST /api/sale-details

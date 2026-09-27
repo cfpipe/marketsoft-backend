@@ -88,6 +88,21 @@ router.post('/', createProvider);
  *         required: true
  *         schema:
  *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               phone:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               city:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Proveedor actualizado
